@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   typedefs.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftymchyn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/19 12:58:53 by ftymchyn          #+#    #+#             */
-/*   Updated: 2018/03/19 12:58:55 by ftymchyn         ###   ########.fr       */
+/*   Created: 2018/03/19 13:22:44 by ftymchyn          #+#    #+#             */
+/*   Updated: 2018/03/19 13:22:46 by ftymchyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "smallpt.h"
+#ifndef TYPEDEFS_H
+# define TYPEDEFS_H
 
-int	main(void)
+typedef enum		e_bool
 {
-	t_sdl	sdl;
+	false, true
+}					t_bool;
 
-	initialize_sdl(&sdl, 1000, 1000);
-	wait_events(&sdl);
-	return (0);
-}
+typedef struct		s_sdl
+{
+	SDL_Window		*window;
+	SDL_Renderer	*renderer;
+	SDL_Texture		*canvas;
+	int				width;
+	int				height;
+	int				*pixels;
+}					t_sdl;
+
+#endif

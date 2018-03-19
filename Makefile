@@ -18,34 +18,43 @@ SRCS_DIR    = ./srcs
 OBJS_DIR    = ./objs
 HEADERS_DIR = ./includes
 
-HEADERS     = smallpt.h
-SRCS        = main.c
-OBJS        = $(addprefix $(OBJS_DIR)/, $(SRCS:.c=.o))
+HEADERS     = smallpt.h typedefs.h
 HEADERS    := $(addprefix $(HEADERS_DIR)/, $(HEADERS))
+
+SRCS        = main.c
+SRCS       += initialize_sdl.c draw_picture.c wait_events.c
+SRCS       += check_error.c
+
+OBJS        = $(SRCS:.c=.o)
 
 INCLUDES    = -I ./includes
 INCLUDES   += -I /Library/Frameworks/SDL2.framework/Headers
 LIBRARIES   = -L. /Library/Frameworks/SDL2.framework/SDL2
 
-all : $(NAME)
+TO_LINKING  = $(addprefix $(OBJS_DIR)/, $(OBJS)) $(INCLUDES) $(LIBRARIES)
 
-$(NAME): $(OBJS_DIR) $(OBJS) $(HEADERS)
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(INCLUDES) $(LIBRARIES)
-	@printf "\e[38;5;46m$(NAME) SUCCESSFUL BUILD\e[0m\n"
+VPATH       = $(SRCS_DIR) $(OBJS_DIR)
+VPATH      += $(SRCS_DIR)/sdl_window $(SRCS_DIR)/secondary_fns
+
+all         : $(NAME)
+
+$(NAME)     : $(OBJS_DIR) $(OBJS) $(HEADERS)
+	@$(CC) $(CFLAGS) -o $(NAME) $(TO_LINKING)
+	@printf "\e[38;5;46m./$(NAME) SUCCESSFUL BUILD\e[0m\n"
 
 $(OBJS_DIR) :
 	@mkdir $(OBJS_DIR)
-	@printf "\e[38;5;46m$(OBJS_DIR) FOLDER CREATED\e[0m\n"
+	@printf "\e[38;5;46m$(OBJS_DIR)    FOLDER CREATED\e[0m\n"
 
-$(OBJS): $(OBJS_DIR)/%.o : $(SRCS_DIR)/%.c $(HEADERS)
-	@$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDES)
+$(OBJS)     : %.o : %.c $(HEADERS)
+	@$(CC) $(CFLAGS) -c $< -o $(OBJS_DIR)/$@ $(INCLUDES)
 
-clean :
+clean       :
 	@rm -rf $(OBJS_DIR)
-	@printf "\e[38;5;226m$(OBJS_DIR) FOLDER DELETED\e[0m\n"
+	@printf "\e[38;5;226m$(OBJS_DIR)    FOLDER DELETED\e[0m\n"
 
-fclean : clean
+fclean      : clean
 	@rm -f $(NAME)
-	@printf "\e[38;5;226m$(NAME) DELETED\e[0m\n"
+	@printf "\e[38;5;226m./$(NAME) DELETED\e[0m\n"
 
-re : fclean all
+re          : fclean all

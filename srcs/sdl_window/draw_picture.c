@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   draw_picture.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftymchyn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/19 12:58:53 by ftymchyn          #+#    #+#             */
-/*   Updated: 2018/03/19 12:58:55 by ftymchyn         ###   ########.fr       */
+/*   Created: 2018/03/19 14:36:50 by ftymchyn          #+#    #+#             */
+/*   Updated: 2018/03/19 14:36:51 by ftymchyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "smallpt.h"
 
-int	main(void)
+void	draw_picture(t_sdl *sdl)
 {
-	t_sdl	sdl;
-
-	initialize_sdl(&sdl, 1000, 1000);
-	wait_events(&sdl);
-	return (0);
+	SDL_UpdateTexture(sdl->canvas, NULL, sdl->pixels, sdl->width << 2);
+	SDL_RenderClear(sdl->renderer);
+	SDL_RenderCopy(sdl->renderer, sdl->canvas, NULL, NULL);
+	SDL_RenderPresent(sdl->renderer);
 }
