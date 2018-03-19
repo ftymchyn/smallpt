@@ -24,9 +24,9 @@ static t_bool	pull_event(SDL_Event *e)
 	return (false);
 }
 
-void			wait_events(t_sdl *sdl)
+void			wait_events(t_smallpt *pt)
 {
-	SDL_Event	e;
+	SDL_Event		e;
 
 	while (1)
 	{
@@ -36,6 +36,6 @@ void			wait_events(t_sdl *sdl)
 				(e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_ESCAPE))
 				return ;
 		}
-		draw_picture(sdl);
+		draw_picture(&pt->sdl);
 	}
 }

@@ -14,6 +14,8 @@
 # define SMALLPT_H
 
 # include <stdio.h>
+# include <stdlib.h>
+# include <math.h>
 # include "SDL.h"
 # include "typedefs.h"
 
@@ -23,8 +25,12 @@
 # define PUT_PIXEL(pixels, width, x, y, c) (pixels[y * width + x] = c)
 
 void	initialize_sdl(t_sdl *sdl, int width, int height);
-void	wait_events(t_sdl *sdl);
+void	wait_events(t_smallpt *pt);
 void	draw_picture(t_sdl *sdl);
 void	check_error(t_bool flag, char *err1, char *err2);
 
+double	dot(t_vec a, t_vec b);
+double	v_len(t_vec v);
+t_vec	norm(t_vec v);
+t_vec	cross(t_vec a, t_vec b);
 #endif

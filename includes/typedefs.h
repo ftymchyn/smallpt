@@ -13,6 +13,8 @@
 #ifndef TYPEDEFS_H
 # define TYPEDEFS_H
 
+typedef double		t_vec __attribute__((vector_size(sizeof(double)*3)));
+
 typedef enum		e_bool
 {
 	false, true
@@ -27,5 +29,11 @@ typedef struct		s_sdl
 	int				height;
 	int				*pixels;
 }					t_sdl;
+
+typedef struct		s_smallpt
+{
+	int				id;
+	t_sdl			sdl;
+}					t_smallpt;
 
 #endif
