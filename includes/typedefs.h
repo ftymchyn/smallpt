@@ -50,10 +50,17 @@ typedef struct		s_sdl
 	int				*pixels;
 }					t_sdl;
 
+typedef struct		s_scene
+{
+	t_sphere		*obj;
+	int				num_obj;
+}					t_scene;
+
 typedef struct		s_smallpt
 {
 	int				id;
 	t_sdl			sdl;
+	t_scene			scene;
 }					t_smallpt;
 
 #endif

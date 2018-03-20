@@ -23,6 +23,7 @@ HEADERS    := $(addprefix $(HEADERS_DIR)/, $(HEADERS))
 
 SRCS        = main.c
 SRCS       += initialize_sdl.c draw_picture.c wait_events.c
+SRCS       += ray.c sphere.c initialize_scene.c
 SRCS       += dot.c v_len.c norm.c cross.c
 SRCS       += check_error.c
 
@@ -36,6 +37,7 @@ TO_LINKING  = $(addprefix $(OBJS_DIR)/, $(OBJS)) $(INCLUDES) $(LIBRARIES)
 
 VPATH       = $(SRCS_DIR) $(OBJS_DIR)
 VPATH      += $(SRCS_DIR)/sdl_window $(SRCS_DIR)/secondary_fns $(SRCS_DIR)/math
+VPATH      += $(SRCS_DIR)/scene
 
 all         : $(NAME)
 

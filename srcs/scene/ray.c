@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ray.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftymchyn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/19 12:58:53 by ftymchyn          #+#    #+#             */
-/*   Updated: 2018/03/19 12:58:55 by ftymchyn         ###   ########.fr       */
+/*   Created: 2018/03/20 13:32:57 by ftymchyn          #+#    #+#             */
+/*   Updated: 2018/03/20 13:32:58 by ftymchyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "smallpt.h"
 
-int	main(void)
+t_ray	ray(t_vec o, t_vec d)
 {
-	t_smallpt	pt;
+	t_ray ray;
 
-	initialize_sdl(&pt.sdl, 1024, 768);
-	initialize_scene(&pt.scene);
-	wait_events(&pt);
-	return (0);
+	ray.o = o;
+	ray.d = d;
+	return (ray);
 }
