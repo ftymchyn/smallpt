@@ -19,6 +19,7 @@ int	main(void)
 	initialize_sdl(&pt.sdl, 1024, 768);
 	initialize_scene(&pt.scene);
 	initialize_camera(&pt.scene, pt.sdl.width, pt.sdl.height);
+	render(&pt);
 	wait_events(&pt);
 	return (0);
 }

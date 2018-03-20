@@ -35,6 +35,8 @@ void			wait_events(t_smallpt *pt)
 			if (e.type == SDL_QUIT ||
 				(e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_ESCAPE))
 				return ;
+			if (e.type == SDL_KEYDOWN)
+				render(pt);
 		}
 		draw_picture(&pt->sdl);
 	}
