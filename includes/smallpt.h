@@ -30,8 +30,9 @@ void		wait_events(t_smallpt *pt);
 void		draw_picture(t_sdl *sdl);
 
 t_ray		ray(t_vec o, t_vec d);
+t_bool		intersect(t_scene *s, t_ray *r, double *t, int *id);
 t_sphere	sphere(double r, t_vec p, t_vec e, t_vec c, t_refl refl);
-double		sphere_intersect(t_sphere *s, t_ray r);
+double		sphere_intersect(t_sphere *s, t_ray *r);
 
 double		dot(t_vec a, t_vec b);
 double		v_len(t_vec v);
