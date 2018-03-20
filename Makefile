@@ -23,7 +23,7 @@ HEADERS    := $(addprefix $(HEADERS_DIR)/, $(HEADERS))
 
 SRCS        = main.c
 SRCS       += initialize_sdl.c draw_picture.c wait_events.c
-SRCS       += ray.c sphere.c initialize_scene.c intersect.c
+SRCS       += ray.c sphere.c initialize_scene.c initialize_camera.c intersect.c
 SRCS       += dot.c v_len.c norm.c cross.c
 SRCS       += check_error.c clamp.c to_int.c
 

@@ -15,7 +15,6 @@
 void	initialize_scene(t_scene *s)
 {
 	s->num_obj = 9;
-
 	s->obj = (t_sphere*)malloc(sizeof(t_sphere) * s->num_obj);
 	check_error(!s->obj, MALLOC_ERR, NULL);
 	s->obj[0] = sphere(1e5, (t_vec){1e5 + 1, 40.8, 81.6},

@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   initialize_camera.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftymchyn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/19 12:58:53 by ftymchyn          #+#    #+#             */
-/*   Updated: 2018/03/19 12:58:55 by ftymchyn         ###   ########.fr       */
+/*   Created: 2018/03/20 17:05:05 by ftymchyn          #+#    #+#             */
+/*   Updated: 2018/03/20 17:05:06 by ftymchyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "smallpt.h"
 
-int	main(void)
+void	initialize_camera(t_scene *s, int w, int h)
 {
-	t_smallpt	pt;
-
-	initialize_sdl(&pt.sdl, 1024, 768);
-	initialize_scene(&pt.scene);
-	initialize_camera(&pt.scene, pt.sdl.width, pt.sdl.height);
-	wait_events(&pt);
-	return (0);
+	s->cam.o = (t_vec){50, 52, 295.6};
+	s->cam.d = norm((t_vec){0, -0.042612, -1});
+	s->cam.cx = (t_vec){w * .5135 / (double)h, 0, 0};
+	s->cam.cy = norm(cross(s->cam.cx, s->cam.d)) * (t_vec){.5135, .5135, .5135};
 }

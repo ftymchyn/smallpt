@@ -48,6 +48,14 @@ typedef struct			s_sphere
 	t_refl				refl;
 }						t_sphere;
 
+typedef struct			s_camera
+{
+	t_vec				o;
+	t_vec				d;
+	t_vec				cx;
+	t_vec				cy;
+}						t_camera;
+
 typedef struct			s_sdl
 {
 	SDL_Window			*window;
@@ -62,6 +70,7 @@ typedef struct			s_scene
 {
 	t_sphere			*obj;
 	int					num_obj;
+	t_camera			cam;
 }						t_scene;
 
 typedef struct			s_smallpt

@@ -21,11 +21,13 @@
 
 # define SDL_ERROR "./smallpt: SDL Error : "
 # define MALLOC_ERR "./smallpt: malloc allocation fails"
-
-# define PUT_PIXEL(pixels, width, x, y, c) (pixels[y * width + x] = c)
+# define THR_ERR "./smallpt: THREAD ERROR: can't create/join thread"
+# define THREADS 8
+# define ADD_SAMPLE(pixels, width, x, y, c) (pixels[y * width + x] += c)
 
 void		initialize_sdl(t_sdl *sdl, int width, int height);
 void		initialize_scene(t_scene *s);
+void		initialize_camera(t_scene *s, int w, int h);
 void		wait_events(t_smallpt *pt);
 void		draw_picture(t_sdl *sdl);
 

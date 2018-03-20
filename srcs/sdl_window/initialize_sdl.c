@@ -39,4 +39,5 @@ void	initialize_sdl(t_sdl *sdl, int width, int height)
 	sdl->height = height;
 	sdl->pixels = (int*)malloc(sizeof(int) * (sdl->width * sdl->height));
 	check_error(!sdl->pixels, MALLOC_ERR, NULL);
+	bzero(sdl->pixels, sizeof(int) * ((sdl->width * sdl->height)));
 }
