@@ -13,54 +13,62 @@
 #ifndef TYPEDEFS_H
 # define TYPEDEFS_H
 
-typedef double		t_vec __attribute__((vector_size(sizeof(double)*3)));
+typedef unsigned char	t_uchar;
 
-typedef enum		e_bool
+typedef double			t_vec __attribute__((vector_size(sizeof(double)*3)));
+
+typedef enum			e_bool
 {
 	FALSE, TRUE
-}					t_bool;
+}						t_bool;
 
-typedef enum		e_refl
+typedef enum			e_refl
 {
 	DIFF, SPEC, REFR
-}					t_refl;
+}						t_refl;
 
-typedef struct		s_ray
+typedef union			u_color
 {
-	t_vec			o;
-	t_vec			d;
-}					t_ray;
+	t_uchar				byte[4];
+	int					val;
+}						t_color;
 
-typedef struct		s_sphere
+typedef struct			s_ray
 {
-	double			r;
-	t_vec			p;
-	t_vec			e;
-	t_vec			c;
-	t_refl			refl;
-}					t_sphere;
+	t_vec				o;
+	t_vec				d;
+}						t_ray;
 
-typedef struct		s_sdl
+typedef struct			s_sphere
 {
-	SDL_Window		*window;
-	SDL_Renderer	*renderer;
-	SDL_Texture		*canvas;
-	int				width;
-	int				height;
-	int				*pixels;
-}					t_sdl;
+	double				r;
+	t_vec				p;
+	t_vec				e;
+	t_vec				c;
+	t_refl				refl;
+}						t_sphere;
 
-typedef struct		s_scene
+typedef struct			s_sdl
 {
-	t_sphere		*obj;
-	int				num_obj;
-}					t_scene;
+	SDL_Window			*window;
+	SDL_Renderer		*renderer;
+	SDL_Texture			*canvas;
+	int					width;
+	int					height;
+	int					*pixels;
+}						t_sdl;
 
-typedef struct		s_smallpt
+typedef struct			s_scene
 {
-	int				id;
-	t_sdl			sdl;
-	t_scene			scene;
-}					t_smallpt;
+	t_sphere			*obj;
+	int					num_obj;
+}						t_scene;
+
+typedef struct			s_smallpt
+{
+	int					id;
+	t_sdl				sdl;
+	t_scene				scene;
+}						t_smallpt;
 
 #endif
