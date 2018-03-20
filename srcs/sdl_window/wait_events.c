@@ -19,9 +19,9 @@ static t_bool	pull_event(SDL_Event *e)
 		if (e->type == SDL_QUIT
 			|| (e->type == SDL_KEYDOWN && !e->key.repeat)
 			|| (e->type == SDL_KEYUP && !e->key.repeat))
-			return (true);
+			return (TRUE);
 	}
-	return (false);
+	return (FALSE);
 }
 
 void			wait_events(t_smallpt *pt)

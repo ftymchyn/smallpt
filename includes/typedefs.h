@@ -17,8 +17,28 @@ typedef double		t_vec __attribute__((vector_size(sizeof(double)*3)));
 
 typedef enum		e_bool
 {
-	false, true
+	FALSE, TRUE
 }					t_bool;
+
+typedef enum		e_refl
+{
+	DIFF, SPEC, REFR
+}					t_refl;
+
+typedef struct		s_ray
+{
+	t_vec			o;
+	t_vec			d;
+}					t_ray;
+
+typedef struct		s_sphere
+{
+	double			r;
+	t_vec			p;
+	t_vec			e;
+	t_vec			c;
+	t_refl			refl;
+}					t_sphere;
 
 typedef struct		s_sdl
 {
