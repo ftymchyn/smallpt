@@ -11,6 +11,7 @@
 # **************************************************************************** #
 
 NAME        = smallpt
+OS          = $(shell uname)
 CC          = clang
 CFLAGS      = -Wall -Wextra -Werror -O3
 
@@ -28,9 +29,15 @@ SRCS       += render.c
 
 OBJS        = $(SRCS:.c=.o)
 
+ifneq ($(OS), Linux)
 INCLUDES    = -I ./includes
 INCLUDES   += -I /Library/Frameworks/SDL2.framework/Headers
 LIBRARIES   = -L. /Library/Frameworks/SDL2.framework/SDL2
+else
+INCLUDES    = -I ./includes
+INCLUDES   += -I /usr/local/include/SDL2/
+LIBRARIES   = -lSDL2 -lm -lpthread
+endif
 
 TO_LINKING  = $(addprefix $(OBJS_DIR)/, $(OBJS)) $(INCLUDES) $(LIBRARIES)
 
