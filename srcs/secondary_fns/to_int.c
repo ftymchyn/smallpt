@@ -14,15 +14,11 @@
 
 int	to_int(t_vec v)
 {
-	int		i;
 	t_color	c;
 
-	i = 0;
-	while (i < 3)
-	{
-		c.byte[i] = (int)(clamp(v[i]) * 255 + .5);
-		i++;
-	}
-	c.byte[i] = 0x0;
+	c.byte[0] = (int)(clamp(v[2]) * 255 + .5);
+	c.byte[1] = (int)(clamp(v[1]) * 255 + .5);
+	c.byte[2] = (int)(clamp(v[0]) * 255 + .5);
+	c.byte[3] = 0x0;
 	return (c.val);
 }
