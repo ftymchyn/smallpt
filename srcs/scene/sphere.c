@@ -25,7 +25,7 @@ double		sphere_intersect(t_sphere *s, t_ray *r)
 	if (dis < 0)
 		return 0;
 	dis = sqrt(dis);
-	return (t = b - dis) > 1e-4 ? t : ((t + dis) > 1e-4 ? t : 0);
+	return ((t = b - dis) > 1e-4) ? t : ((t = b + dis) > 1e-4) ? t : 0;
 }
 
 t_sphere	sphere(double r, t_vec p, t_vec e, t_vec c, t_refl refl)

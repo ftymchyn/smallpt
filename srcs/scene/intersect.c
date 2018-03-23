@@ -23,7 +23,7 @@ t_bool	intersect(t_scene *s, t_ray *r, double *t, int *id)
 	i = 0;
 	while (i < s->num_obj)
 	{
-		if ((d = sphere_intersect(&s->obj[i], r) && d < *t))
+		if ((d = sphere_intersect(&s->obj[i], r)) && d < *t)
 		{
 			*t = d;
 			*id = i;
