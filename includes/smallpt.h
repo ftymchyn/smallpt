@@ -24,12 +24,14 @@
 # define MALLOC_ERR "./smallpt: malloc allocation fails"
 # define THR_ERR "./smallpt: THREAD ERROR: can't create/join thread"
 # define THREADS 8
+# define SAMPLES 1
 # define ADD_SAMPLE(p, w, x, y, c) (p[y * w + x] = averaged(p[y * w + x], c))
 
 void		initialize_sdl(t_sdl *sdl, int width, int height);
 void		initialize_scene(t_scene *s);
 void		initialize_camera(t_scene *s, int w, int h);
 void		render(t_smallpt *smallpt);
+t_vec       radiance(t_smallpt *pt, t_ray r, int depth, int flag);
 void		wait_events(t_smallpt *pt);
 void		draw_picture(t_sdl *sdl);
 

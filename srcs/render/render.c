@@ -12,6 +12,45 @@
 
 #include "smallpt.h"
 
+static t_vec	compute_pixel_color(t_smallpt *pt, int x, int y)
+{
+	double	r1;
+	double	r2;
+	double	dx;
+	double	dy;
+	t_vec	rad = {0, 0, 0};
+	t_vec	res = {0, 0, 0};
+	t_vec	d;
+
+	for (size_t sy = 0; sy < 2; sy++)
+	{
+		for (size_t sx = 0; sx < 2; sx++)
+		{
+			for (size_t s = 0; s < SAMPLES; s++)
+			{
+				r1 = 2 * erand48(pt->xi);
+				r2 = 2 * erand48(pt->xi);
+				dx = (r1 < 1) ? sqrt(r1) - 1 : 1 - sqrt(2 - r1);
+				dy = (r2 < 1) ? sqrt(r2) - 1 : 1 - sqrt(2 - r2);
+				dx = ((sx + 0.5 + dx) / 2.0 + x) / (double)pt->sdl.width - 0.5;
+				dy = ((sy + 0.5 + dy) / 2.0 + y) / (double)pt->sdl.height - 0.5;
+				d = pt->scene.cam.cx * (t_vec){dx, dx, dx} +
+					pt->scene.cam.cy * (t_vec){dy, dy, dy} + pt->scene.cam.d;
+				rad += radiance(
+						pt,
+						ray(
+							pt->scene.cam.o + (t_vec){140, 140, 140} * d,
+							norm(d)),
+						0, 1) *
+					(t_vec){1.0 / SAMPLES, 1.0 / SAMPLES, 1.0 / SAMPLES};
+			}
+			res += (t_vec){clamp(rad[0]), clamp(rad[1]), clamp(rad[2])} *
+					(t_vec){.25, .25, .25};
+		}
+	}
+	return (res);
+}
+
 static void		*thread_render(void *smallpt)
 {
 	t_smallpt	*pt;
@@ -26,10 +65,14 @@ static void		*thread_render(void *smallpt)
 	while (++y < y_end)
 	{
 		x = 0;
+		pt->xi[0] = 0;
+		pt->xi[1] = 0;
+		pt->xi[2] = y * y * y;
 		while (x < pt->sdl.width)
 		{
-			col = (t_vec){.25, .25, .75}; //stub, trace_path() in future
-			ADD_SAMPLE(pt->sdl.pixels, pt->sdl.width, x, y, to_int(col));
+			col = compute_pixel_color(pt, x, y);
+			ADD_SAMPLE(pt->sdl.pixels, pt->sdl.width,
+				x, (pt->sdl.height - y - 1), to_int(col));
 			x++;
 		}
 	}

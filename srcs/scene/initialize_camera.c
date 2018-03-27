@@ -15,7 +15,7 @@
 void	initialize_camera(t_scene *s, int w, int h)
 {
 	s->cam.o = (t_vec){50, 52, 295.6};
-	s->cam.d = norm((t_vec){0, -0.042612, -1});
+	s->cam.d = norm((t_vec){0, -0.05, -1});
 	s->cam.cx = (t_vec){w * .5135 / (double)h, 0, 0};
 	s->cam.cy = norm(cross(s->cam.cx, s->cam.d)) * (t_vec){.5135, .5135, .5135};
 }

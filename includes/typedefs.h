@@ -14,7 +14,7 @@
 # define TYPEDEFS_H
 
 typedef unsigned char	t_uchar;
-
+typedef unsigned short	t_ushort;
 typedef double			t_vec __attribute__((vector_size(sizeof(double)*3)));
 
 typedef enum			e_bool
@@ -78,6 +78,7 @@ typedef struct			s_smallpt
 	int					id;
 	t_sdl				sdl;
 	t_scene				scene;
+	t_ushort			xi[3];
 }						t_smallpt;
 
 #endif
