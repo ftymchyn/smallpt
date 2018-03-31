@@ -24,7 +24,7 @@
 # define MALLOC_ERR "./smallpt: malloc allocation fails"
 # define THR_ERR "./smallpt: THREAD ERROR: can't create/join thread"
 # define THREADS 4
-# define SAMPLES 1
+# define SAMPLES 10
 # define ADD_SAMPLE(p, w, x, y, c) (p[y * w + x] = averaged(p[y * w + x], c))
 
 void		initialize_sdl(t_sdl *sdl, int width, int height);
@@ -50,4 +50,5 @@ void		check_error(t_bool flag, char *err1, char *err2);
 double		clamp(double x);
 int			to_int(t_vec v);
 int			averaged(int c_1, int c_2);
+void        image_to_file(t_smallpt *pt, char *file);
 #endif

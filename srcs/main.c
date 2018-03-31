@@ -21,5 +21,6 @@ int	main(void)
 	initialize_camera(&pt.scene, pt.sdl.width, pt.sdl.height);
 	render(&pt);
 	wait_events(&pt);
+	image_to_file(&pt, "smallpt.ppm");
 	return (0);
 }
