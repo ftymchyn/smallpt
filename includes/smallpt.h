@@ -23,7 +23,7 @@
 # define SDL_ERROR "./smallpt: SDL Error : "
 # define MALLOC_ERR "./smallpt: malloc allocation fails"
 # define THR_ERR "./smallpt: THREAD ERROR: can't create/join thread"
-# define THREADS 8
+# define THREADS 4
 # define SAMPLES 1
 # define ADD_SAMPLE(p, w, x, y, c) (p[y * w + x] = averaged(p[y * w + x], c))
 
@@ -31,7 +31,9 @@ void		initialize_sdl(t_sdl *sdl, int width, int height);
 void		initialize_scene(t_scene *s);
 void		initialize_camera(t_scene *s, int w, int h);
 void		render(t_smallpt *smallpt);
-t_vec       radiance(t_smallpt *pt, t_ray r, int depth, int flag);
+t_vec       radiance(t_smallpt *pt, t_ray r, t_ushort *xi);
+t_surface   get_surface_properties(t_smallpt *pt, t_ray r, double t, int id);
+t_ray       diffuse_reflection(t_surface s, t_ushort *xi);
 void		wait_events(t_smallpt *pt);
 void		draw_picture(t_sdl *sdl);
 

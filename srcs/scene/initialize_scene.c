@@ -33,6 +33,6 @@ void	initialize_scene(t_scene *s)
 		(t_vec){0, 0, 0}, (t_vec){1, 1, 1}, DIFF);
 	s->obj[7] = sphere(16.5, (t_vec){73, 16.5, 78},
 		(t_vec){0, 0, 0}, (t_vec){1, 1, 1}, DIFF);
-	s->obj[8] = sphere(1.5, (t_vec){50, 81.6 - 16.5, 81.6},
-		(t_vec){400, 400, 400}, (t_vec){0, 0, 0}, DIFF);
+	s->obj[8] = sphere(600, (t_vec){50, 681.6 - .27, 81.6},
+		(t_vec){12, 12, 12}, (t_vec){0, 0, 0}, DIFF);
 }

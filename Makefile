@@ -25,7 +25,7 @@ HEADERS    := $(addprefix $(HEADERS_DIR)/, $(HEADERS))
 SRCS        = main.c initialize_sdl.c draw_picture.c wait_events.c averaged.c
 SRCS       += ray.c sphere.c initialize_scene.c initialize_camera.c intersect.c
 SRCS       += dot.c v_len.c norm.c cross.c check_error.c clamp.c to_int.c
-SRCS       += render.c radiance.c
+SRCS       += render.c radiance.c get_surface_properties.c diffuse_reflection.c
 
 OBJS        = $(SRCS:.c=.o)
 
